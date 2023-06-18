@@ -1,0 +1,22 @@
+name: Practice 
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repo
+        uses: actions/checkout@v3
+      - name: Install nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run LINT
+        run : npm lint
+      - name: Run tests
+        run: npm test
+      - name: build project
+        run: npm run build
+      - name: deploy Project
+        run: echo "Deploying..."
